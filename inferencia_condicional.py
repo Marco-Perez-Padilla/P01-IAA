@@ -1,4 +1,4 @@
-from csv.distribucion_conjunta import DistribucionConjunta
+from csvcode.distribucion_conjunta import DistribucionConjunta
 from probabilidades.array_probabilidades import ArrayProbabilidades
 from seleccionador.seleccionador import SelectorVariables
 
