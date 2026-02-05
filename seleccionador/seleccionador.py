@@ -25,10 +25,11 @@ class SelectorVariables:
 
         # Variables de interés
         entrada = input("Variables de interés (ej: 1,3): ")
-        indices = entrada.split(",")
-        for var in indices:
-            i = int(var) - 1
-            self.maskI |= (1 << i)
+        if entrada.strip():
+            indices = entrada.split(",")
+            for var in indices:
+                i = int(var) - 1
+                self.maskI |= (1 << i)
 
     def mostrar(self):
         """
