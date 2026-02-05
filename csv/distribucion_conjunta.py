@@ -1,4 +1,6 @@
 import csv 
+import random
+
 class DistribucionConjunta:
     def __init__(self, N):
         self.N = N

@@ -1,4 +1,3 @@
-
 class ArrayProbabilidades:
     def __init__(self, distribucion_conjunta):
         self.N = distribucion_conjunta.N
