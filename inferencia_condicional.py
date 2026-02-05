@@ -12,7 +12,7 @@ class Main:
 
         if opcion == "1":
             nombre = input("Nombre del archivo CSV: ")
-            distribucion = DistribucionConjunta.desde_csv(nombre)
+            distribucion = DistribucionConjunta.leer_csv(DistribucionConjunta, nombre)
         else:
             N = int(input("Número de variables binarias N: "))
             distribucion = DistribucionConjunta.aleatoria(DistribucionConjunta, N)
