@@ -13,9 +13,11 @@ class Main:
         if opcion == "1":
             nombre = input("Nombre del archivo CSV: ")
             distribucion = DistribucionConjunta.leer_csv(DistribucionConjunta, nombre)
-        else:
+        elif opcion == "2":
             N = int(input("Número de variables binarias N: "))
             distribucion = DistribucionConjunta.aleatoria(DistribucionConjunta, N)
+        else 
+            raise ValueError("Opción no valida")
 
         distribucion.mostrar()
 

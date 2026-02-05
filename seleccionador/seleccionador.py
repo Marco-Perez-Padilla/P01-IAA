@@ -24,7 +24,7 @@ class SelectorVariables:
                     self.valC |= (1 << i)
 
         # Variables de interés
-        entrada = input("Variables de interés (ej: 1,3): ")
+        entrada = input("Variables de interés (ej: 1,3) o ENTER si ninguna: ")
         if entrada.strip():
             indices = entrada.split(",")
             for var in indices:
