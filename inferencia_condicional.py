@@ -16,7 +16,7 @@ class Main:
         elif opcion == "2":
             N = int(input("Número de variables binarias N: "))
             distribucion = DistribucionConjunta.aleatoria(DistribucionConjunta, N)
-        else 
+        else: 
             raise ValueError("Opción no valida")
 
         distribucion.mostrar()
