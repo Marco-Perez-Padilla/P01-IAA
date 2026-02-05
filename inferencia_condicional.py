@@ -1,9 +1,26 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Programa principal para hacer inferencia condicional
+
+Autores: Keran Miranda González, Marco Pérez Padilla
+Fecha: 05/02/2026
+Universidad de La Laguna - Inteligencia Artificial Avanzada
+"""
+
 from csvcode.distribucion_conjunta import DistribucionConjunta
 from probabilidades.array_probabilidades import ArrayProbabilidades
 from seleccionador.seleccionador import SelectorVariables
 
 class Main:
     def ejecutar():
+        """
+        Ejecuta el flujo principal del programa.
+
+        Permite cargar una distribución conjunta desde un archivo CSV o
+        generarla de forma aleatoria, seleccionar variables condicionadas
+        y mostrar el array de probabilidades resultante.
+        """
         print("Inferencia Condicional en Distribuciones Binarias")
         print("1) Cargar distribución desde CSV")
         print("2) Generar distribución aleatoria")
