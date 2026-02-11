@@ -108,7 +108,7 @@ class ArrayProbabilidades:
         if self.is_sparse:
             print(f"Modo disperso: {len(self.p_sparse):,} de {2**self.N:,} configuraciones")
             for k in sorted(self.p_sparse.keys())[:50]:  # Limitar a primeras 50 para N grande
-                print(f"k={k:>10} ({format(k, f'0{self.N}b')}): {self.p_sparse[k]:.5f}")
+                print(f"k={k:>10} ({format(k, f'0{self.N}b')}): {self.p_sparse[k]:.10f}")
             if len(self.p_sparse) > 50:
                 print(f"... ({len(self.p_sparse) - 50} configuraciones más)")
         else:

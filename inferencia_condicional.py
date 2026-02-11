@@ -18,7 +18,31 @@ def main():
         distribucion = DistribucionConjunta.leer_csv(DistribucionConjunta, nombre)
     else:
         N = int(input("Número de variables binarias N: "))
-        distribucion = DistribucionConjunta.aleatoria(DistribucionConjunta, N)
+        num_configs = None
+
+        if N > 20:
+            print(f"\n[N={N}] El espacio total de configuraciones es 2^{N} = {2**N:,}.")
+            print("- Pulsa ENTER para usar 10.000 configuraciones (recomendado).")
+            print("- Escribe un número (ej. 50000) para generar esa cantidad.")
+            print("- Escribe 0 para intentar generar todas.")
+            resp = input("Número de configuraciones: ").strip()
+            
+            if resp == "":
+                num_configs = None  
+
+            else:
+                try:
+                    num_configs = int(resp)
+                    if num_configs < 0:
+                        print("Número no válido. Se usarán 10.000.")
+                        num_configs = None
+                except ValueError:
+                    print("Entrada no válida. Se usarán 10.000.")
+                    num_configs = None
+        else:
+            num_configs = 0
+
+        distribucion = DistribucionConjunta.aleatoria(DistribucionConjunta, N, num_configs)
 
     distribucion.mostrar()
 
