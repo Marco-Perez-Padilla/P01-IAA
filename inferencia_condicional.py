@@ -1,7 +1,7 @@
-from datos.distribucion_conjunta import DistribucionConjunta
+from csvcode.distribucion_conjunta import DistribucionConjunta
 from seleccionador.seleccionador import SelectorVariables
 from probabilidades.array_probabilidades import ArrayProbabilidades
-from InferenciaCondicional import InferenciaCondicional
+from InferenciaCondicional.InferenciaCondicional import InferenciaCondicional
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
         distribucion = DistribucionConjunta.desde_csv(nombre)
     else:
         N = int(input("Número de variables binarias N: "))
-        distribucion = DistribucionConjunta.aleatoria(N)
+        distribucion = DistribucionConjunta.aleatoria(DistribucionConjunta, N)
 
     distribucion.mostrar()
 

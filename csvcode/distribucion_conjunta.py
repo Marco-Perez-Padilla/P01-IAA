@@ -71,7 +71,7 @@ class DistribucionConjunta:
 
         for i in range(num_estados):
             mascara = format(i, f"0{N}b")
-            instancia.distribucion[mascara] = valores[k] / suma
+            instancia.distribucion[mascara] = valores[i] / suma
 
         return instancia
 
