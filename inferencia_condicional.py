@@ -1,8 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from csvcode.distribucion_conjunta import DistribucionConjunta
 from seleccionador.seleccionador import SelectorVariables
 from probabilidades.array_probabilidades import ArrayProbabilidades
 from InferenciaCondicional.InferenciaCondicional import InferenciaCondicional
-
+from csvcode.guardar_csv import GuardarCSV
+import time
 
 def main():
     print("Inferencia Condicional en Distribuciones Binarias")
@@ -25,26 +29,53 @@ def main():
     array_p = ArrayProbabilidades(distribucion)
     array_p.mostrar()
 
-    # --- Punto 4 y 5: cálculo distribución condicional ---
+    print("\n[Calculando distribución condicional...]")
+    inicio = time.time()
+
     condicional = InferenciaCondicional.prob_cond_bin(
-        p=array_p.p,
+        array_p=array_p,
         N=distribucion.N,
         maskC=selector.maskC,
         valC=selector.valC,
         maskI=selector.maskI
     )
 
-    # --- Punto 6: salida de la distribución condicional ---
+    tiempo = time.time() - inicio
+    print(f"[Tiempo de ejecución: {tiempo*1000:.2f} ms]")
+
     print("\nDistribución condicional resultante:")
     num_I = len(condicional)
+    num_bits_I = bin(selector.maskI).count("1")
+
     if num_I == 1:
         print(f"P(condición) = {condicional[0]:.5f}")
     else:
         for idx, prob in enumerate(condicional):
-            # Representación binaria de variables de interés
-            mask_str = format(idx, f"0{bin(selector.maskI).count('1')}b")
+            mask_str = format(idx, f"0{num_bits_I}b")
             print(f"{mask_str} -> {prob:.5f}")
 
+    print("\n--- Opciones de guardado (CSV) ---")
+    resp = input("¿Guardar distribución conjunta? (S/N): ").strip().lower()
+    if resp in ('s', 'si', 'sí'):
+        nombre = input("Nombre del archivo [distribucion_conjunta.csv]: ").strip()
+        if nombre == "":
+            nombre = "distribucion_conjunta.csv"
+        GuardarCSV.guardar_conjunta(
+            distribucion.distribucion,
+            distribucion.N,
+            nombre
+        )
+
+    resp = input("¿Guardar distribución condicional? (S/N): ").strip().lower()
+    if resp in ('s', 'si', 'sí'):
+        nombre = input("Nombre del archivo [distribucion_condicional.csv]: ").strip()
+        if nombre == "":
+            nombre = "distribucion_condicional.csv"
+        GuardarCSV.guardar_condicional(
+            condicional,
+            selector.maskI,
+            nombre
+        )
 
 if __name__ == "__main__":
     main()
