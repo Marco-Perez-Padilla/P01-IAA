@@ -115,7 +115,7 @@ class ArrayProbabilidades:
             count = 0
             for i, val in enumerate(self.p):
                 if val > 0:
-                    print(f"k={i:>3} ({format(i, f'0{self.N}b')}): {val:.5f}")
+                    print(f"k={i:>3} ({format(i, f'0{self.N}b')}): {val:.10f}")
                     count += 1
             if count == 0:
                 print("(Todas las probabilidades son cero)")

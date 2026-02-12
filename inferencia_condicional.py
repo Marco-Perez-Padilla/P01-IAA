@@ -72,11 +72,11 @@ def main():
     num_bits_I = bin(selector.maskI).count("1")
 
     if num_I == 1:
-        print(f"P(condición) = {condicional[0]:.5f}")
+        print(f"P(condición) = {condicional[0]:.10f}")
     else:
         for idx, prob in enumerate(condicional):
             mask_str = format(idx, f"0{num_bits_I}b")
-            print(f"{mask_str} -> {prob:.5f}")
+            print(f"{mask_str} -> {prob:.10f}")
 
     print("\n--- Opciones de guardado (CSV) ---")
     resp = input("¿Guardar distribución conjunta? (S/N): ").strip().lower()

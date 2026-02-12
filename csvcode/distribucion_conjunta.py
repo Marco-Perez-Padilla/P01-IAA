@@ -149,7 +149,7 @@ class DistribucionConjunta:
         
         count = 0
         for mascara, probabilidad in sorted(self.distribucion.items()):
-            print(f"{mascara} -> {probabilidad:.5f}")
+            print(f"{mascara} -> {probabilidad:.10f}")
             count += 1
             if count >= 50 and len(self.distribucion) > 50:
                 print(f"... ({len(self.distribucion) - 50} configuraciones más)")
